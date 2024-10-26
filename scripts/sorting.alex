@@ -1,9 +1,9 @@
 LIST list
 APPEND list INT 3
-APPEND list INT 1
 APPEND list INT 5
-APPEND list INT 2
+APPEND list INT 1
 APPEND list INT 4
+APPEND list INT 2
 PRINT @list
 -- create sorted list
 LIST sorted
@@ -12,7 +12,7 @@ SET INT len = 5
 SET INT amountSorted = 0
 SET INT ctr = 0
 SET INT indexSmallest = 0
-SET INT smallest = 6
+SET INT smallest = 99999
 
 IF (@ctr == @len) 28 ELSE NEXT
 

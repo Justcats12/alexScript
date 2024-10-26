@@ -137,9 +137,9 @@ while program_lines[line_tracker] != "END":
         parsedLine = unparsedLine.replace(unparsedLine[indexes[0]:indexes[1]+1], parsed)
     else:
         parsedLine = unparsedLine
-    
+        
     parts = parsedLine.split(" ")
-    
+        
     instruction = parts[0]
     match instruction:
         case "SET":
@@ -154,6 +154,8 @@ while program_lines[line_tracker] != "END":
             ifTrue = parseText(parts[2])
             assert parts[3] == "ELSE", "IF statement must have an ELSE"
             ifFalse = parseText(parts[4])
+            if line_tracker == ifTrue- 1 or line_tracker == ifFalse-1:
+                raise Exception(f"ALEXSCRIPT: Error on line {line_tracker}, IF destination cannot point to the same line.")
             if condition == "TRUE":
                 line_tracker = int(ifTrue) -1
             else:
@@ -163,8 +165,10 @@ while program_lines[line_tracker] != "END":
             statement = parseText(" ".join(parts[1:])).replace("_", " ").replace("\"", "")
             print(statement)
         case "JUMP":
-            destination = parseText(parts[1])
-            line_tracker = int(destination) -1
+            destination = int(parseText(parts[1]))
+            if line_tracker == destination- 1:
+                raise Exception(f"ALEXSCRIPT: Error on line {line_tracker}, JUMP destination cannot point to the same line.")
+            line_tracker = destination -1
             continue
         case "INPUT":
             datatype = parts[1]
@@ -173,7 +177,7 @@ while program_lines[line_tracker] != "END":
                 value = parseText(f"\"{input()}\"")
             else:
                 value = input()
-            #print(value, line_tracker)
+                #print(value, line_tracker)
             makeVar(varName, datatype, value)
         case "SUM":
             varName = parts[1]
@@ -202,6 +206,5 @@ while program_lines[line_tracker] != "END":
         case _:
             line_tracker += 1
             continue
-    
+        
     line_tracker += 1
-
