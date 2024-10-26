@@ -1,0 +1,4 @@
+SUM sum 1 2 3
+-- hello mom
+PRINT @sum
+END

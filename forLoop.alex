@@ -1,0 +1,10 @@
+SET INT ctr = 0
+IF (@ctr == 6) 10 ELSE NEXT
+PRINT @ctr
+SUM ctr @ctr 1
+JUMP 2
+
+
+
+
+END

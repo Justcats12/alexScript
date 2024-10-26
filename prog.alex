@@ -1,0 +1,10 @@
+INPUT INT testVareable
+SET STR word = "hello world"
+
+
+IF (@testVareable == 5) NEXT ELSE 8
+PRINT @testVareable
+JUMP 10
+PRINT @word
+
+END
