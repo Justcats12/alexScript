@@ -36,4 +36,9 @@ From now no longer need the python3
 - `PRINT <anything>` print to terminal
 - `INPUT INT|BOOL|STR <varname>` input into vareable
 - `IF (<condition>) <line1> ELSE <line2>` if statement, jumps to line1 if true, line2 if anything else
+- `LIST <name>` to create a list
+- `INDEX <list> <index>` to be able to access the indexed value wiht @INDEX
+- `POP <list> [<index>]` to pop a list at index
+- `APPEND <list> INT|BOOL|STR <value>` to add a value to a list
+- Comment with everything else, you can write `COMMENT <comment>` or `-- <comment>` or `# comment`, which ever suits you best
 - That's about it

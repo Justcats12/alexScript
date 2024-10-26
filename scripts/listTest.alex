@@ -1,0 +1,13 @@
+LIST hello
+APPEND hello INT 7
+APPEND hello STR "hello world"
+INDEX hello 0
+PRINT @INDEX
+PRINT @hello
+POP hello
+INDEX hello -1
+PRINT @INDEX
+PRINT @hello
+
+
+END

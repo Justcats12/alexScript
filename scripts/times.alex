@@ -1,3 +1,15 @@
-
-
+-- ask for input
+PRINT "Input x:"
+INPUT INT x
+PRINT "Input y:"
+INPUT INT y
+-- for loop adding @y to @prod @x times
+SET INT prod = 0
+SET INT ctr = 0
+IF (@ctr == @x) 13 ELSE NEXT
+SUM prod @prod @y
+SUM ctr @ctr 1
+JUMP 9
+-- print output
+PRINT @prod
 END

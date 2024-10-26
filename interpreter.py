@@ -36,6 +36,17 @@ def makeVar(name, type, value : str):
         case _:
             var_keeper[name] = None
 
+def makeList(name):
+    var_keeper[name] = []
+
+def appendList(listName, type, value):
+    makeVar(0, type, value)
+    tempvar = var_keeper.copy()[0]
+    var_keeper[listName].append(tempvar)
+    #print (var_keeper[listName])
+def popList(listName, index):
+    var_keeper[listName].pop(index)
+
 def replaceSpaces(text):
     oldText = text
     newtext = ""
@@ -77,6 +88,8 @@ def parseText(programText : str) -> str:
                     parts[i] = "TRUE"
                 else:
                     parts[i] = "FALSE"
+            elif isinstance(value, list):
+                parts[i] = f"LIST({','.join(replaceSpaces(str(i)) for i in value)})"
             else:
                 parts[i] = "NULL"
         elif part == "NEXT":
@@ -165,6 +178,25 @@ while program_lines[line_tracker] != "END":
             allNumbers = [parseText(x) for x in parts[2:]]
             sumNumbers = str(sum([int(i) for i in allNumbers]))
             makeVar(varName, "INT", sumNumbers) 
+        case "LIST":
+            makeList(parts[1])
+        case "APPEND":
+            listName = parts[1]
+            type = parts[2]
+            value = parseText(" ".join(parts[3:]))
+            appendList(listName, type, value)
+        case "POP":
+            listName = parts[1]
+            if len(parts) == 3:
+                index = int(parseText(parts[2]))
+            else:
+                index = -1
+            popList(listName, index)
+        case "INDEX":
+            listName = parts[1]
+            index = int(parseText(parts[2]))
+            var_keeper["INDEX"] = var_keeper[listName][index]
+
         case _:
             line_tracker += 1
             continue
