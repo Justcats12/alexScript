@@ -7,29 +7,29 @@ APPEND list INT 2
 PRINT @list
 -- create sorted list
 LIST sorted
-
+-- set lenght of list, amount of items sorted, loop counter, smallest index and smallest item
 SET INT len = 5
 SET INT amountSorted = 0
 SET INT ctr = 0
 SET INT indexSmallest = 0
 SET INT smallest = 99999
-
+-- start for loop
 IF (@ctr == @len) 28 ELSE NEXT
-
+-- get list item to check
 INDEX list @ctr
-
+-- check if smaller than smallest so far, if not restart loop
 IF (@INDEX < @smallest) NEXT ELSE 25
 SET INT smallest = @INDEX
 SET INT indexSmallest = @ctr
-
+-- restart loop
 SUM ctr @ctr 1
 JUMP 16 
-
+-- add smallest of the remaining numbers to the sorted list
 SUM amountSorted @amountSorted 1
 SUM len @len -1
 POP list @indexSmallest
 APPEND sorted INT @smallest
-
+-- repeat from line 13 untill all items sorted
 IF (@amountSorted == 5) NEXT ELSE 13
 PRINT @sorted
 END
