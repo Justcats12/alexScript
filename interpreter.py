@@ -1,3 +1,4 @@
+#! /bin/python3
 import sys
 
 program_path = sys.argv[1]
