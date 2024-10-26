@@ -1,0 +1,35 @@
+LIST list
+APPEND list INT 3
+APPEND list INT 1
+APPEND list INT 5
+APPEND list INT 2
+APPEND list INT 4
+PRINT @list
+-- create sorted list
+LIST sorted
+
+SET INT len = 5
+SET INT amountSorted = 0
+SET INT ctr = 0
+SET INT indexSmallest = 0
+SET INT smallest = 6
+
+IF (@ctr == @len) 28 ELSE NEXT
+
+INDEX list @ctr
+
+IF (@INDEX < @smallest) NEXT ELSE 25
+SET INT smallest = @INDEX
+SET INT indexSmallest = @ctr
+
+SUM ctr @ctr 1
+JUMP 16 
+
+SUM amountSorted @amountSorted 1
+SUM len @len -1
+POP list @indexSmallest
+APPEND sorted INT @smallest
+
+IF (@amountSorted == 5) NEXT ELSE 13
+PRINT @sorted
+END

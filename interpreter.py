@@ -109,11 +109,12 @@ def parseText(programText : str) -> str:
         elif parts[1] == "!=":
             output = (parts[0] != parts[2])
         elif parts[1] == ">":
-            output = (parts[0] > parts[2])
+            output = (int(parts[0]) > int(parts[2]))
         elif parts[1] == "<":
-            output = (parts[0] < parts[2])
+            output = (int(parts[0]) < int(parts[2]))
         
         if output != None:
+            #print(output)
             if output:
                 return "TRUE"
             return "FALSE"
