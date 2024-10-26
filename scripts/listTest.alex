@@ -1,13 +1,14 @@
-LIST hello
-APPEND hello INT 7
-APPEND hello STR "hello world"
-INDEX hello 0
-PRINT @INDEX
-PRINT @hello
-POP hello
-INDEX hello -1
-PRINT @INDEX
-PRINT @hello
+LIST list
+SET INT number = 1
+APPEND list INT @number
+PRINT @list
 
+LIST list2
+APPEND list2 INT 1
+PRINT @list2
 
+IF (@list == @list2) NEXT ELSE 12
+PRINT TRUE
+JUMP 14
+PRINT FALSE
 END

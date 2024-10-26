@@ -89,7 +89,7 @@ def parseText(programText : str) -> str:
                 else:
                     parts[i] = "FALSE"
             elif isinstance(value, list):
-                parts[i] = f"LIST({','.join(replaceSpaces(str(i)) for i in value)})"
+                parts[i] = f"LIST[{','.join(replaceSpaces(str(i)) for i in value)}]"
             else:
                 parts[i] = "NULL"
         elif part == "NEXT":
@@ -105,6 +105,7 @@ def parseText(programText : str) -> str:
         output = None
         if parts[1] == "==":
             output = (parts[0] == parts[2])
+            #print(parts)
         elif parts[1] == "!=":
             output = (parts[0] != parts[2])
         elif parts[1] == ">":
