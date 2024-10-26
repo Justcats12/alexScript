@@ -1,6 +1,10 @@
 # AlexScript by justcats12
 This is a language I made for the fun, it's not a good programming language but you can make silly stuff and it's a nice challenge to try and make something in this language.
 
+# Requirements
+
+Python 3.12.7 or later, some earlier versions might also work
+
 # Run a script
 
 From repository folder
@@ -9,6 +13,16 @@ make a script first or use an example from the /scripts/ folder
 
 ```
 python3 ./interpreter.py path/to/file
+```
+
+## Linux easier sytax
+
+```
+chmod u+x ./interpreter.py
+```
+From now no longer need the python3
+```
+./interpreter.py path/to/file
 ```
 
 # Syntax
