@@ -92,6 +92,10 @@ def parseText(programText : str) -> str:
                 parts[i] = f"LIST[{','.join(replaceSpaces(str(i)) for i in value)}]"
             else:
                 parts[i] = "NULL"
+        elif part[0] == "+":
+            parts[i] == str(line_tracker + int(part[1:]))
+        elif part[0] == "-":
+            parts[i] == str(line_tracker - int(part[1:]))
         elif part == "NEXT":
             parts[i] = str(line_tracker + 2)
             #print(line_tracker)
