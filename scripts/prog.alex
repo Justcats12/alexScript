@@ -2,9 +2,10 @@ INPUT INT testVareable
 SET STR word = "hello world"
 
 
-IF (@testVareable == 5) NEXT ELSE 8
+IF (@testVareable == 5) NEXT ELSE +3
 PRINT @testVareable
 JUMP 10
 PRINT @word
-
+JUMP +2
+JUMP -1
 END

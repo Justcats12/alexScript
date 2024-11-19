@@ -75,6 +75,7 @@ def parseText(programText : str) -> str:
     #print(parts)
     # fill in variables
     for i in range(len(parts)):
+        global line_tracker
         part = parts[i]
         if part.startswith("@"):
             value = var_keeper[part[1:]]
@@ -92,13 +93,12 @@ def parseText(programText : str) -> str:
                 parts[i] = f"LIST[{','.join(replaceSpaces(str(i)) for i in value)}]"
             else:
                 parts[i] = "NULL"
-        elif part[0] == "+":
-            parts[i] == str(line_tracker + int(part[1:]))
-        elif part[0] == "-":
-            parts[i] == str(line_tracker - int(part[1:]))
+        elif part.startswith("+"):
+            parts[i] = str(line_tracker + 1 + int(part))
+        elif part.startswith("-"):
+            parts[i] = str(line_tracker + 1 + int(part))
         elif part == "NEXT":
             parts[i] = str(line_tracker + 2)
-            #print(line_tracker)
         elif part == "PREV":
             parts[i] = str(line_tracker)
 
@@ -155,9 +155,9 @@ while program_lines[line_tracker] != "END":
             makeVar(varName, datatype, value)
         case "IF":
             condition = parts[1]
-            ifTrue = parseText(parts[2])
+            ifTrue = int(parseText(parts[2]))
             assert parts[3] == "ELSE", "IF statement must have an ELSE"
-            ifFalse = parseText(parts[4])
+            ifFalse = int(parseText(parts[4]))
             if line_tracker == ifTrue- 1 or line_tracker == ifFalse-1:
                 raise Exception(f"ALEXSCRIPT: Error on line {line_tracker}, IF destination cannot point to the same line.")
             if condition == "TRUE":
